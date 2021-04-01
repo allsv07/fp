@@ -1,6 +1,9 @@
 <?php
-$db = mysqli_connect('localhost', 'root', 'root', 'fp');
 
-if ($db == false) die('Connection error');
+try {
+    $db = new PDO('mysql:host=localhost;dbname=fp', 'root', 'root');
+} catch (PDOException $exception) {
+    die($exception->getMessage('Connection error'));
+}
 
 ?>

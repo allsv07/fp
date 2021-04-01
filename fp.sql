@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 01 2021 г., 19:25
+-- Время создания: Апр 01 2021 г., 22:37
 -- Версия сервера: 10.3.22-MariaDB
 -- Версия PHP: 7.4.5
 
@@ -30,17 +30,18 @@ SET time_zone = "+00:00";
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `first_name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `last_name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
+  `last_name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `bdate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `first_name`, `last_name`) VALUES
-(1, 'Иван', 'Иванов'),
-(2, 'Елена', 'Простая'),
-(3, 'Александр', 'Петров');
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `bdate`) VALUES
+(1, 'Иван', 'Иванов', '1990-01-10'),
+(2, 'Елена', 'Простая', '1990-11-01'),
+(3, 'Александр', 'Петров', '1980-11-05');
 
 --
 -- Индексы сохранённых таблиц
