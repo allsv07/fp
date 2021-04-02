@@ -1,16 +1,10 @@
 <?php
 require_once('db.php');
+require_once('libs/function.php');
 
-if (isset($_POST['btn_birth'])) {
-    $date = htmlspecialchars($_POST['date_birth']);
-
-    //get user
-    $result = $db->prepare("SELECT * FROM `users` WHERE YEAR(`bdate`) = ?");
-    $result->execute([$date]);
-} else {
-    $result = $db->query("SELECT * FROM `users`");
-}
-
+$result = $db->query("SELECT * FROM `users`");
+$arrUsers = $result->fetchAll(PDO::FETCH_ASSOC);
+//pr($arrUsers);
 ?>
 
 <!DOCTYPE html>
@@ -24,33 +18,37 @@ if (isset($_POST['btn_birth'])) {
     <title>user</title>
 </head>
 <body>
-<? $count = $result->rowCount(); ?>
-<span class="count_user">Пользователи (<?=$count?>)</span>
+
+<span class="count_user">Пользователи (<strong><?=count($arrUsers)?></strong>)</span>
 <table>
-    <th>№</th>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Date of birth</th>
-    <? if (isset($result)): ?>
-    <? while ($user = $result->fetch(PDO::FETCH_ASSOC)): ?>
+    <thead>
+        <th>№</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Date of birth</th>
+    </thead>
+
+    <tbody>
+    <? foreach ($arrUsers as $user): ?>
         <tr>
-            <td><?= $user['id'] ?></td>
-            <td><?= $user['first_name'] ?></td>
-            <td><?= $user['last_name'] ?></td>
-            <td><?= $user['bdate'] ?></td>
+            <td><?=$user['id']?></td>
+            <td><?=$user['first_name']?></td>
+            <td><?=$user['last_name']?></td>
+            <td><?=$user['bdate']?></td>
         </tr>
-    <? endwhile; ?>
-    <? endif; ?>
+    <? endforeach; ?>
+    </tbody>
 </table>
 
 <div class="block-form">
     <form action="" method="post" class="form_birth">
         <label class="label_birth_date" for="date">Введите год</label>
         <input type="text" name="date_birth" id="date_birth" class="date_birth">
-        <input type="submit" name="btn_birth" class="btn_birth" value="Показать">
+        <input type="submit" name="btn_birth" class="btn_birth" id="btn_birth" value="Показать">
     </form>
 </div>
 
-
+<script src="libs/jQuery.js"></script>
+<script src="libs/script.js"></script>
 </body>
 </html>
