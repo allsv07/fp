@@ -24,7 +24,8 @@ if (isset($_POST['btn_birth'])) {
     <title>user</title>
 </head>
 <body>
-
+<? $count = $result->rowCount(); ?>
+<span class="count_user">Пользователи (<?=$count?>)</span>
 <table>
     <th>№</th>
     <th>First Name</th>
