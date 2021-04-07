@@ -31,13 +31,12 @@ $app->get('/', function (Request $request, Response $response) {
     return $render->render($response, 'index.php');
 });
 
-$app->get('/hello', function (Request $request, Response $response, $args){
-    $data = json_decode(file_get_contents('php://input'));
-//    $userObj = new \app\Model\Users();
-//    $arrUser = $userObj->getUserByBDate($data);
-
-    $response->getBody()->write(pr($data));
-    return $response;
+$app->post('/sort-user', function (Request $request, Response $response, $args){
+    //$data = json_decode(file_get_contents('php://input'));
+    $data = $_POST['date_birth'];
+    
+//    $response->getBody()->write('12');
+//    return $response;
 
 });
 

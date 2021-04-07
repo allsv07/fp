@@ -26,7 +26,7 @@
 </table>
 
 <div class="block-form">
-    <form action="/hello" method="post" class="form_birth">
+    <form action="" method="post" class="form_birth">
         <label class="label_birth_date" for="date_birth">Введите год</label>
         <input type="text" name="date_birth" id="date_birth" class="date_birth">
         <input type="submit" name="btn_birth" class="btn_birth" id="btn_birth" value="Показать">

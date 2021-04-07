@@ -14,8 +14,9 @@ window.onload = function () {
             return await response.json();
         }
 
-        postData('/hello', year).then(data => {
+        postData('/sort-user', year).then(data => {
             document.querySelector(".count_user > strong").innerText = data.length;
+            console.log(data);
             let list = '';
 
             for (let i = 0; i < data.length; i++) {
