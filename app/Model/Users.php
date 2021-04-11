@@ -30,6 +30,6 @@ class Users
         $result = $this->connect->prepare($sql);
         $result->execute([$data]);
 
-        echo json_encode($result->fetchAll(\PDO::FETCH_ASSOC));
+        return json_encode($result->fetchAll(\PDO::FETCH_ASSOC));
     }
 }
