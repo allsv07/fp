@@ -5,25 +5,25 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Factory\AppFactory;
 use DI\Container;
 use Slim\Views\PhpRenderer;
+use config\DB;
 
 require __DIR__ .'/../vendor/autoload.php';
 require __DIR__ . '/../app/Model/Users.php';
 require __DIR__ . '/../src/config/DB.php';
 require __DIR__ . '/../src/function.php';
+require __DIR__ . '/../src/config/bootstrap.php';
 
+
+AppFactory::setContainer($container);
 
 $app = AppFactory::create();
 
-$app->addErrorMiddleware(true, true, true);
 
 
-
-$app->get('/', function (Request $request, Response $response) {
-    $userObj = new \app\Model\Users();
-    $arrUser = $userObj->getAllUsers();
-    $countUser = count($arrUser);
-
-    $attr = ['title' => 'Title Users', 'users' => $arrUser ,'countUser' => $countUser];
+$app->get("/", function (Request $request, Response $response) use ($container)  {
+    $arrUsers = $container->get('getAllUsers');
+    $countUser = count($arrUsers);
+    $attr = ['title' => 'Title Users', 'users' => $arrUsers ,'countUser' => $countUser];
 
     $render = new PhpRenderer('../app/views');
     $render->setAttributes($attr);
@@ -31,12 +31,11 @@ $app->get('/', function (Request $request, Response $response) {
     return $render->render($response, 'index.php');
 });
 
-$app->post('/', function (Request $request, Response $response, $args) use ($app){
+$app->post("/", function (Request $request, Response $response) use ($container)  {
     $data = file_get_contents('php://input');
-    $userObj = new \app\Model\Users();
-    $sortUser = $userObj->getUserByBDate(htmlspecialchars($data));
+    $arrUsers = $container->get('getUserByBDate', $data);
 
-    $response->getBody()->write($sortUser);
+    $response->getBody()->write($arrUsers);
     return $response;
 });
 

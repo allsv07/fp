@@ -10,7 +10,7 @@ return array(
     'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
-    'Slim\\Views\\' => array($vendorDir . '/slim/twig-view/src', $vendorDir . '/slim/php-view/src'),
+    'Slim\\Views\\' => array($vendorDir . '/slim/php-view/src', $vendorDir . '/slim/twig-view/src'),
     'Slim\\Psr7\\' => array($vendorDir . '/slim/psr7/src'),
     'Slim\\' => array($vendorDir . '/slim/slim/Slim'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
@@ -22,5 +22,7 @@ return array(
     'Invoker\\' => array($vendorDir . '/php-di/invoker/src'),
     'Fig\\Http\\Message\\' => array($vendorDir . '/fig/http-message-util/src'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
+    'DI\\Bridge\\Slim\\' => array($vendorDir . '/php-di/slim-bridge/src'),
     'DI\\' => array($vendorDir . '/php-di/php-di/src'),
+    'App\\' => array($baseDir . '/app'),
 );

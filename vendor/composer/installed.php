@@ -74,6 +74,15 @@
       ),
       'reference' => '66daff34cbd2627740ffec9469ffbac9f8c8185c',
     ),
+    'php-di/slim-bridge' => 
+    array (
+      'pretty_version' => '3.1.0',
+      'version' => '3.1.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'c118174d07e5b6969f678298d6c44364acb2afd7',
+    ),
     'psr/container' => 
     array (
       'pretty_version' => '1.1.1',
